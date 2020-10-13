@@ -20,4 +20,4 @@ jobs:
         ~/.local/bin/conan profile update settings.compiler.libcxx=libstdc++11 default
     - name: Build
       run: |
-        ~/.local/bin/conan create . catch2/2.13.2@iceshard/stable
+        ~/.local/bin/conan create . Catch2/2.13.2@iceshard/stable
