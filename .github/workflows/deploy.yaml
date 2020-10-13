@@ -6,25 +6,6 @@ on:
     - v*
 
 jobs:
-  deploy-build-windows:
-    name: Deploy (Windows)
-    runs-on: windows-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Setup repository
-      run: |
-        pip3 install setuptools
-        pip3 install conan
-        conan remote add conan-iceshard https://conan.iceshard.net/
-        conan remote add conan-bincrafters https://api.bintray.com/conan/bincrafters/public-conan
-    - name: Build
-      run: |
-        conan create . catch2/2.13.2@iceshard/stable
-    - name: Deploy
-      run: |
-        conan user iceshard -r conan-iceshard -p ${{ secrets.CONAN_PASSWORD }}
-        conan upload -r conan-iceshard catch2/2.13.2@iceshard/stable --all
-
   depoly-build-ubuntu:
     name: Deploy (Ubuntu)
     runs-on: ubuntu-latest
